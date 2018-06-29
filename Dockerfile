@@ -35,8 +35,8 @@ RUN set -ex \
 	&& mkdir -p /usr/src/python \
 	&& tar -xJC /usr/src/python --strip-components=1 -f python.tar.xz \
 	&& rm python.tar.xz \
-	\
 	&& cd /usr/src/python \
+	&& sed -i'' "s|\('/lib', '/usr/lib',\)|\1 '/usr/lib/x86_64-linux-gnu',|"  setup.py \
 	&& gnuArch="$(dpkg-architecture --query DEB_BUILD_GNU_TYPE)" \
 	&& ./configure \
 		--build="$gnuArch" \
