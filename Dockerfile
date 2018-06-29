@@ -15,8 +15,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 		tk \
 	&& rm -rf /var/lib/apt/lists/*
 
-ENV GPG_KEY C01E1CAD5EA2C4F0B8E3571504C367C218ADD4FF
-ENV PYTHON_VERSION 2.7.15
+ENV GPG_KEY 8417157EDBE73D9EAC1E539B126EB563A74B06BF
+ENV PYTHON_VERSION 2.6.9
 
 RUN set -ex \
 	&& buildDeps=' \
@@ -61,7 +61,7 @@ ENV PYTHON_PIP_VERSION 10.0.1
 
 RUN set -ex; \
 	\
-	wget -O get-pip.py 'https://bootstrap.pypa.io/get-pip.py'; \
+	wget -O get-pip.py 'https://bootstrap.pypa.io/2.6/get-pip.py'; \
 	\
 	python get-pip.py \
 		--disable-pip-version-check \
