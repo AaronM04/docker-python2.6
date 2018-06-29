@@ -56,6 +56,7 @@ RUN set -ex \
 	&& rm python.tar.xz \
 	\
 	&& cd /usr/src/python \
+	&& sed -i'' "s|\('/lib', '/usr/lib',\)|\1 '/usr/lib/x86_64-linux-gnu',|"  setup.py \
 	&& gnuArch="$(dpkg-architecture --query DEB_BUILD_GNU_TYPE)" \
 	&& ./configure \
 		--build="$gnuArch" \
@@ -76,7 +77,7 @@ RUN set -ex \
 	&& rm -rf /usr/src/python
 
 # if this is called "PIP_VERSION", pip explodes with "ValueError: invalid truth value '<VERSION>'"
-ENV PYTHON_PIP_VERSION 10.0.1
+ENV PYTHON_PIP_VERSION 9.0.3
 
 RUN set -ex; \
 	\
@@ -106,4 +107,4 @@ RUN set -ex; \
 # install "virtualenv", since the vast majority of users of this image will want it
 RUN pip install --no-cache-dir virtualenv
 
-CMD ["python2"]
+CMD ["python2.6"]
