@@ -1,4 +1,4 @@
-FROM 2d957176d6ac
+FROM aaronm04/docker-python2.6:latest
 
 
 WORKDIR /usr/src/app
